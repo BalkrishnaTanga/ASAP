@@ -13,6 +13,7 @@ from selenium.webdriver.chrome.service import Service as ChromeService, Service
 from selene.api import browser
 from selenium import webdriver
 import allure
+from selenium.webdriver.chrome.service import Service as ChromeService
 
 
 cwd = os.path.abspath(os.getcwd())
@@ -86,18 +87,7 @@ def initialize(context):
         print("[Error]: Environment xml not fount at " + os.path.abspath(os.curdir))
         exit()
     parse_environment_file(context, environment_xml)
-    options = Options()
-    options.headless = False
-    options.add_argument("--disable-popup-blocking")
-    options.add_argument("--no-sandbox")
-    options.add_argument("--disable-dev-shm-usage")
-    options.add_experimental_option("prefs", {
-        "download.prompt_for_download": False
-    })
-    #if context.context.browser_information == "Chrome":
-    service = Service('D:\\Project\\Selenium\\Browsers\\chromedriver.exe')  # Specify the full path to the correct chromedriver
-    options = webdriver.ChromeOptions()
-    driver = webdriver.Chrome(service=service, options=options)
+    driver = webdriver.Chrome(ChromeDriverManager().install())
     context.browser = driver
     driver.set_page_load_timeout(30)
     setup_selene(context, driver)
