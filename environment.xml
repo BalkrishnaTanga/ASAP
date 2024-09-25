@@ -1,0 +1,29 @@
+<?xml version="1.0" ?>
+
+<environment>
+    <parameter>
+        <key>server_url</key>
+        <value>https://test-ph2-ecc.tangandcompany.com</value>
+    </parameter>
+
+    <parameter>
+        <key>username</key>
+        <value>testuser</value>
+    </parameter>
+
+    <parameter>
+        <key>password</key>
+        <value>Tanga321#</value>
+    </parameter>
+
+    <parameter>
+        <key>browser</key>
+        <value>Chrome</value>
+    </parameter>
+
+    <parameter>
+        <key>Regression</key>
+        <value>Regression</value>
+    </parameter>
+
+</environment>

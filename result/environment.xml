@@ -1,0 +1,24 @@
+<?xml version="1.0" ?>
+
+<environment>
+    <parameter>
+        <key>server_url</key>
+        <value>https://www.google.com</value>
+    </parameter>
+
+    <parameter>
+        <key>username</key>
+        <value>uname</value>
+    </parameter>
+
+    <parameter>
+        <key>password</key>
+        <value>password</value>
+    </parameter>
+
+    <parameter>
+        <key>browser</key>
+        <value>Chrome</value>
+    </parameter>
+
+</environment>
