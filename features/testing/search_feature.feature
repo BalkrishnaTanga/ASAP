@@ -79,7 +79,7 @@ Feature:  Search Functionality
             | option  | email | disabled |
             | Email  |   5EDCEA67-C3C3@osca.com    | true|
 
-  Scenario Outline:  TC_05 || Verify new employee + button is visible in search with new lastname
+  Scenario Outline:  Verify new employee + button is visible in search with new lastname
             Given : Navigate to Home page
             And last <option> digit option is selected from dropdown
             And Enter the lastname <lastName>
