@@ -1,8 +1,12 @@
 import glob
 import logging
 import os
+import shutil
+import subprocess
 import sys
 import threading
+
+from behave.capture import capture_output
 
 from common.setup import parse_environment_file, result_folder_path
 from multiprocessing import context
@@ -24,6 +28,14 @@ def run_each_feature_file(a_files,tag_value):
         os.environ["TMPDIR"] = "/tmp"
         os.system(result_command)
 
+def run_history():
+    os.makedirs("result/allure_result/history", exist_ok=True)
+    for filename in os.listdir("allure-report/history"):
+        shutil.copy(os.path.join("allure-report/history", filename), "result/allure_result/history")
+    os.system("allure generate result/allure_result --clean -o allure-report")
+
+    #os.system('cp -r allure-report/history result/allure_result/history')
+    #os.system('allure generate result/allure_result --clean -o allure-report')
 
 def run_all_feature_files(tag_value):
     files = glob.glob(os.path.join(cwd, "**/*.feature"), recursive=True)
@@ -64,3 +76,4 @@ isExist = os.path.exists(path)
 if not isExist:
     os.makedirs(path)
 run_all_feature_files(tag_value)
+run_history()
