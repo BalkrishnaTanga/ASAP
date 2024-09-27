@@ -1,9 +1,14 @@
 Feature:  Search Functionality
 
-  Scenario: Verify employee + button is visible in Search for new SSN
+  Scenario Outline: Verify employee + button is visible in Search for new SSN
     Given : Navigate to Home page
-    When Enter the new employee ssn number
+    When Enter the new employee numbers <ssn>
     Then employee information popup should open
+    Examples:;
+      | ssn         |
+      | 323-22-4444 |
+
+
   Scenario Outline: Verify employee button should be disabled for exiting ssn number
     Given : Navigate to Home page
     When enter already existing employee <ssn>
@@ -195,26 +200,26 @@ Feature:  Search Functionality
       | option  | employee_ref_id |company_name | disabled |
       | Employee/Ref Id |   D232434   |  C-MM000012       | true |
 
-  Scenario Outline:  Verify new employee+ buttion is visible in search with new ApplicationID
+  Scenario Outline:  Verify new employee+ button is visible in search with new ApplicationID
     Given : Navigate to Home page
     And last <option> digit option is selected from dropdown
     When Enter the <company_name>
-    And User the application id on search epage <applicaiton_id>
+    And User the application id on search epage <application_id>
     When user click on add employee button
     Then employee information popup should open
     Examples:
-              | option  | applicaiton_id |company_name |
+              | option  | application_id |company_name |
               | Application Id |   852122   |  AA010110       |
 
   Scenario Outline:  Verify new employee+ button is disable in search with existing ApplicationID
     Given : Navigate to Home page
     And last <option> digit option is selected from dropdown
     When Enter the <company_name>
-    And User the application id on search epage <applicaiton_id>
+    And User the application id on search epage <application_id>
     When user click on add employee button
     Then verify the employee button is <disabled>
     Examples:
-      | option  | applicaiton_id |company_name | disabled |
+      | option  | application_id |company_name | disabled |
       | Application Id |   A23423   |  C-MM000012       | true |
 
   Scenario: Demo failed test cases

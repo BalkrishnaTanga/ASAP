@@ -20,11 +20,11 @@ def step_impl(context):
     context.loginPage.return_login_button().click()
 
 
-@when("Enter the new employee ssn number")
-def step_impl(context):
+@when("Enter the new employee numbers {ssn}")
+def step_impl(context,ssn):
     context.employee_searchOBJ = EmployeePage(context)
     context.employee_searchOBJ.click_search_employee()
-    context.employee_searchOBJ.return_dashboard_employee_search_employee_search_field().send_keys("445-55-5555")
+    context.employee_searchOBJ.return_dashboard_employee_search_employee_search_field().send_keys(ssn)
     context.employee_searchOBJ.return_submit_btn_element().click()
     context.employee_searchOBJ.click_employee_button()
 
