@@ -11,6 +11,7 @@ pipeline {
             steps {
                 echo 'Running the test cases'
                 bat """
+                        pip3 install -r requirement.txt
                         python test_runner.py ${tags}
                 """
             }
