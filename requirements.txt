@@ -21,3 +21,5 @@ openpyxl
 pyperclip
 xlsxwriter
 bs4
+allure-python-commons~=2.13.5
+webdriver-manager~=4.0.0
