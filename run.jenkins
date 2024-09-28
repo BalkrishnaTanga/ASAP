@@ -1,0 +1,16 @@
+pipeline {
+    agent {
+        label 'automation agent'
+    }
+    parameters{
+        choice(choices:['~@all', '@regression'], description: 'Tags to be selected', name:'tags')
+    }
+
+    stages {
+        stage('Run test cases') {
+            steps {
+                echo 'Running the test cases'
+            }
+        }
+    }
+}
