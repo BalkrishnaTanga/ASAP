@@ -7,9 +7,12 @@ pipeline {
     }
 
     stages {
-        stage('Run test cases') {
+        stage('Running test cases') {
             steps {
                 echo 'Running the test cases'
+                bat """
+                        python test_runner.py ${tags}
+                """
             }
         }
     }

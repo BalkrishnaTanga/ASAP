@@ -108,6 +108,7 @@ Feature:  Search Functionality
                 | option  | firstname |
                 | First Name |   MaSamplem    |
 
+  @regression
   Scenario Outline: Verify  new employee + button is disable mode in search with  existing firstname
     Given : Navigate to Home page
     And last <option> digit option is selected from dropdown
@@ -117,6 +118,7 @@ Feature:  Search Functionality
     Examples:
        | option  | firstname | disabled |
        | First Name |   MaSample    | true |
+
 
   Scenario Outline: Verify new employee +button is visible in search with new Passport#
     Given : Navigate to Home page
