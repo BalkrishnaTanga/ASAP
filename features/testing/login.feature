@@ -10,7 +10,7 @@ Feature: Login Page Functionality
       | username | password |
       | testuser | Tanga321#|
 
-@regression
+
   Scenario: Login with Invalid user credentials
      Given Open application and enter invalid username with password
      When user clicks on login button
