@@ -1,19 +1,19 @@
-import json
+
 import os
 import re
 import subprocess
 import sys
+
+
 from behave.model_core import Status
 from xml.dom import minidom
 import requests
-from selenium.webdriver.chrome.options import Options
-from selenium import webdriver
-from webdriver_manager.chrome import ChromeDriverManager
-from selenium.webdriver.chrome.service import Service as ChromeService, Service
+
+from selenium.webdriver.chrome.service import  Service
 from selene.api import browser
 from selenium import webdriver
 import allure
-from selenium.webdriver.chrome.service import Service as ChromeService
+
 
 
 cwd = os.path.abspath(os.getcwd())
@@ -87,7 +87,10 @@ def initialize(context):
         print("[Error]: Environment xml not fount at " + os.path.abspath(os.curdir))
         exit()
     parse_environment_file(context, environment_xml)
-    driver = webdriver.Chrome(ChromeDriverManager().install())
+    #driver = webdriver.Chrome(ChromeDriverManager().install())
+    service = Service("D:\Project\Selenium\Browsers\chromedriver.exe")
+    options = webdriver.ChromeOptions()
+    driver = webdriver.Chrome(service=service, options=options)
     context.browser = driver
     driver.set_page_load_timeout(30)
     setup_selene(context, driver)
