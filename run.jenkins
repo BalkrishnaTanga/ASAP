@@ -17,5 +17,18 @@ pipeline {
                 """
             }
         }
+        stage('Generate Reports') {
+            steps {
+                      publishHTML([
+                        reportNname : 'Allure Report',
+                        reportDir : 'python_BDD\\result\\alluer_result',
+                        reportFiles : 'index.html',
+                        reportTitles : '',
+                        allowMissing : false,
+                        alwaysLinkToLastBuild: false,
+                        keepAll: false
+                      ])
+            }
+        }
     }
 }
