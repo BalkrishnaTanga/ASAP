@@ -17,12 +17,12 @@ pipeline {
                 """
             }
         }
-        stage('Generate Reports') {
-            steps {
-                     allure includeProperties: false,
-                     jdk: '',
-                     results: [[path: 'allure-results']]
-            }
+    }
+    post{
+        always{
+            allure includeProperties : false,
+            jdk : '',
+            results: [[path: 'C:\\jenkins\\workspace\\uitest_pipeline\\allure-report']]
         }
     }
 }
