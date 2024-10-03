@@ -21,7 +21,7 @@ pipeline {
             steps {
                       publishHTML([
                         reportName : 'Allure Report',
-                        reportDir : 'result\\alluer_result',
+                        reportDir : 'result\\allure_result',
                         reportFiles : 'index.html',
                         reportTitles : '',
                         allowMissing : false,
