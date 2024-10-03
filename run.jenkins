@@ -19,15 +19,9 @@ pipeline {
         }
         stage('Generate Reports') {
             steps {
-                      publishHTML([
-                        reportName : 'Allure Report',
-                        reportDir : 'result\\allure_result',
-                        reportFiles : 'index.html',
-                        reportTitles : '',
-                        allowMissing : false,
-                        alwaysLinkToLastBuild: false,
-                        keepAll: false
-                      ])
+                     allure includeProperties: false,
+                     jdk: '',
+                     results: [[path: 'allure-results']]
             }
         }
     }
