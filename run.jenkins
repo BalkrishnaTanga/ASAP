@@ -20,7 +20,7 @@ pipeline {
         stage('Generate Reports') {
             steps {
                       publishHTML([
-                        reportNname : 'Allure Report',
+                        reportName : 'Allure Report',
                         reportDir : 'python_BDD\\result\\alluer_result',
                         reportFiles : 'index.html',
                         reportTitles : '',
