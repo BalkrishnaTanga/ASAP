@@ -22,7 +22,7 @@ pipeline {
         always{
             allure includeProperties : false,
             jdk : '',
-            results: [[path: 'C:\\jenkins\\workspace\\uitest_pipeline\\allure-report']]
+            results: [[path: 'C:\\jenkins\\workspace\\uitest_pipeline\\result\\allure_report']]
         }
     }
 }
