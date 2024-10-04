@@ -5,6 +5,7 @@ from common.setup import initialize, scenario_screenshot_on_failure, clean_up, d
 source_directory = os.path.join(os.getcwd(),"\\result\\allure_result")
 destination_directory = os.path.join(os.getcwd(),"\\result\\allure_result\\history")
 file_extensions = ('.png','.json')
+cwd = os.getcwd()
 
 def before_all(context):
     #shutil.copy("allure-report/history", "result/allure_result/history")
@@ -31,7 +32,7 @@ def after_all(context):
     clean_up(context)
     command = os.path.join('allure generate ',(os.path.abspath(os.curdir)), 'result/allure_result --clean -o ',(os.path.abspath(os.curdir)), 'result/allure-report')
     print()
-    run_shell_command("allure generate C:\\Python-Selenium\\Python_SeleniumBDD\\Python_Selenium\\result\\allure_result --clean -o C:\\Python-Selenium\\Python_SeleniumBDD\\Python_Selenium\\allure-report")
+    run_shell_command(f"allure generate {cwd}\\result\\allure_result --clean -o {cwd}\\allure-report")
 
 def copy_history(context,src_dir, dest_dir, extensions):
     os.makedirs(dest_dir, exist_ok=True)
