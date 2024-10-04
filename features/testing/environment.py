@@ -2,8 +2,8 @@ import os
 import shutil
 
 from common.setup import initialize, scenario_screenshot_on_failure, clean_up, delete_folder_contents, run_shell_command
-source_directory = os.path.join(os.getcwd(),"\\allure_result")
-destination_directory = os.path.join(os.getcwd(),"\\result\\allure_result\\history")
+source_directory = os.path.join(os.getcwd(),"\\allure-results")
+destination_directory = os.path.join(os.getcwd(),"\\allure-results\\history")
 file_extensions = ('.png','.json')
 cwd = os.getcwd()
 
