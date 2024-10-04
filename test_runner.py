@@ -6,9 +6,10 @@ import subprocess
 import sys
 import threading
 
-from behave.capture import capture_output
+from six import print_
 
 from common.setup import parse_environment_file, result_folder_path
+
 from multiprocessing import context
 
 
@@ -29,13 +30,11 @@ def run_each_feature_file(a_files,tag_value):
         os.system(result_command)
 
 def run_history():
-    os.makedirs("result/allure_result/history", exist_ok=True)
-    for filename in os.listdir("allure-report/history"):
-        shutil.copy(os.path.join("allure-report/history", filename), "result/allure_result/history")
-    os.system("allure generate result/allure_result --clean -o allure-report")
+    os.makedirs("allure-results\\history", exist_ok=True)
+    for filename in os.listdir("allure-report\\history"):
+        shutil.copy(os.path.join("allure-report\\history", filename), "allure-results\\history")
+    os.system("allure generate allure-results --clean -o allure-report")
 
-    #os.system('cp -r allure-report/history result/allure_result/history')
-    #os.system('allure generate result/allure_result --clean -o allure-report')
 
 def run_all_feature_files(tag_value):
     files = glob.glob(os.path.join(cwd, "**/*.feature"), recursive=True)
@@ -63,14 +62,16 @@ def run_all_feature_files(tag_value):
         thread_one.join()
         thread_two.join()
 
-if len(sys.argv)<2:
+if len(sys.argv)<1:
     print("Uusage : TtstRunner.py <tags>")
     sys.exit(1)
 
 print("sys.argv:; ", sys.argv)
 tags = sys.argv[1]
+print(tags)
 tag_value = f'--tags="{tags}"'
 result_folder_path(context)
+print(context.result_path)
 path = "failure_screenshot"
 isExist = os.path.exists(path)
 if not isExist:

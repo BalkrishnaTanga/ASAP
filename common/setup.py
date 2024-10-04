@@ -129,7 +129,7 @@ def parse_environment_file(context, environment_xml):
         context.serverPath = context.serverPath + "/"
 
 def result_folder_path(context):
-    result_path = cwd + "/result/allure_result"
+    result_path = cwd + "\\allure-results"
     context.result_path = result_path
 
 
