@@ -12,6 +12,7 @@ from common.setup import parse_environment_file, result_folder_path
 
 from multiprocessing import context
 
+from features.testing.environment import copy_history
 
 cwd = os.path.abspath(os.getcwd())
 run_whitelist_check = False
@@ -30,16 +31,48 @@ def run_each_feature_file(a_files,tag_value):
         os.system(result_command)
 
 def run_history():
-    os.makedirs("allure-results\\history", exist_ok=True)
-    for filename in os.listdir("allure-report\\history"):
-        shutil.copy(os.path.join("allure-report\\history", filename), "allure-results\\history")
+    print(f"rmdir {cwd}\\allure-results\\history")
     os.system("allure generate allure-results --clean -o allure-report")
 
+
+def copy_contents(source_dir, dest_dir):
+    """
+    Copy all contents from source_dir to dest_dir.
+    """
+    try:
+        for item in os.listdir(source_dir):
+            src_path = os.path.join(source_dir, item)
+            dest_path = os.path.join(dest_dir, item)
+
+            if os.path.isfile(src_path):
+                shutil.copy2(src_path, dest_path)
+            elif os.path.isdir(src_path):
+                shutil.copytree(src_path, dest_path)
+
+        print(f"All contents copied from '{source_dir}' to '{dest_dir}'.")
+    except Exception as e:
+        print(f"Error copying contents: {e}")
+
+
+def clear_directory(directory):
+    """
+    Clear all contents from a given directory.
+    """
+    try:
+        for filename in os.listdir(directory):
+            filepath = os.path.join(directory, filename)
+            if os.path.isfile(filepath):
+                os.remove(filepath)
+            elif os.path.isdir(filepath):
+                shutil.rmtree(filepath)
+        print(f"Directory '{directory}' cleared successfully.")
+    except Exception as e:
+        print(f"Error clearing directory: {e}")
 
 def run_all_feature_files(tag_value):
     files = glob.glob(os.path.join(cwd, "**/*.feature"), recursive=True)
     files.sort()
-    print("Rrun Aall")
+    print("Run Aall")
     print(files)
     with open(exclude_feature_files) as file:
         exclude_files = file.readlines()
@@ -63,7 +96,7 @@ def run_all_feature_files(tag_value):
         thread_two.join()
 
 if len(sys.argv)<1:
-    print("Uusage : TtstRunner.py <tags>")
+    print("Usage : TestRunner.py <tags>")
     sys.exit(1)
 
 print("sys.argv:; ", sys.argv)

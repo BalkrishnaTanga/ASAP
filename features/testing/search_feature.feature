@@ -1,5 +1,6 @@
 Feature:  Search Functionality
 
+
   Scenario Outline: Verify employee + button is visible in Search for new SSN
     Given : Navigate to Home page
     When Enter the new employee numbers <ssn>
