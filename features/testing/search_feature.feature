@@ -9,7 +9,7 @@ Feature:  Search Functionality
       | ssn         |
       | 323-22-4444 |
 
-
+  @regression
   Scenario Outline: Verify employee button should be disabled for exiting ssn number
     Given : Navigate to Home page
     When enter already existing employee <ssn>
