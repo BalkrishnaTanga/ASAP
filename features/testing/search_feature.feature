@@ -18,7 +18,7 @@ Feature:  Search Functionality
       | ssn         | disabled |
       | 11-111-1111 | true     |
       | 12-22-22222  | true    |
-  @regression
+
   Scenario Outline: Verify new employee + button is visible in search with new Last 4 Digit of SSN and Last Name
     Given : Navigate to Home page
     Given last <option> digit option is selected from dropdown
